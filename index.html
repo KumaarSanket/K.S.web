@@ -16,10 +16,10 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0ea5e9', // Sky Blue 500
-                        secondary: '#7e22ce', // Violet 700
-                        dark: '#0f172a', // Slate 900
-                        darker: '#020617', // Slate 950
+                        primary: '#0ea5e9',
+                        secondary: '#7e22ce',
+                        dark: '#0f172a',
+                        darker: '#020617',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -29,14 +29,149 @@
         }
     </script>
     
-    <!-- Custom CSS for gradients, hover effects, and animations -->
+    <!-- Custom CSS -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #020617;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #1e293b;
+            border-top-color: #0ea5e9;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0f172a;
             color: #e2e8f0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Light Mode */
+        body.light-mode {
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+        
+        body.light-mode .bg-dark {
+            background-color: #ffffff !important;
+        }
+        
+        body.light-mode .bg-darker {
+            background-color: #f8fafc !important;
+        }
+        
+        body.light-mode .bg-slate-800 {
+            background-color: #e2e8f0 !important;
+        }
+        
+        body.light-mode .bg-slate-900 {
+            background-color: #cbd5e1 !important;
+        }
+        
+        body.light-mode .text-slate-200,
+        body.light-mode .text-slate-300,
+        body.light-mode .text-slate-400 {
+            color: #475569 !important;
+        }
+        
+        body.light-mode .project-card,
+        body.light-mode .skill-box {
+            background: linear-gradient(145deg, #ffffff, #f1f5f9) !important;
+            box-shadow: 5px 5px 15px rgba(148, 163, 184, 0.3),
+                        -5px -5px 15px rgba(255, 255, 255, 0.8) !important;
+        }
+        
+        body.light-mode nav {
+            background-color: rgba(248, 250, 252, 0.9) !important;
+        }
+        
+        /* Dark/Light Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0ea5e9, #7e22ce);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .gradient-text {
@@ -121,6 +256,12 @@
             box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
         }
         
+        body.light-mode .contact-input {
+            background-color: #ffffff;
+            border-color: #cbd5e1;
+            color: #1e293b;
+        }
+        
         .btn-primary {
             background: linear-gradient(90deg, #0ea5e9, #7e22ce);
             transition: all 0.3s ease;
@@ -182,6 +323,12 @@
                 left: 7.5px;
                 transform: none;
             }
+            
+            .theme-toggle {
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
         }
 
         .custom-scrollbar::-webkit-scrollbar {
@@ -202,7 +349,6 @@
             background: #475569;
         }
 
-        /* Enhanced Skills Section - Infinite Scroll */
         .skills-wrapper {
             overflow: hidden;
             position: relative;
@@ -231,10 +377,19 @@
             background: linear-gradient(to left, #0f172a, transparent);
         }
 
+        body.light-mode .skills-wrapper::before {
+            background: linear-gradient(to right, #ffffff, transparent);
+        }
+
+        body.light-mode .skills-wrapper::after {
+            background: linear-gradient(to left, #ffffff, transparent);
+        }
+
         .skills-track {
             display: flex;
             width: fit-content;
             gap: 2rem;
+            will-change: transform;
         }
 
         .skills-track-right {
@@ -303,6 +458,10 @@
             color: #e2e8f0;
         }
 
+        body.light-mode .skill-name {
+            color: #1e293b;
+        }
+
         .skill-meter-bar {
             height: 6px;
             background: #1e293b;
@@ -311,15 +470,77 @@
             margin-top: 0.75rem;
         }
 
+        body.light-mode .skill-meter-bar {
+            background: #cbd5e1;
+        }
+
         .skill-meter-fill {
             height: 100%;
             background: linear-gradient(90deg, #0ea5e9, #7e22ce);
             border-radius: 3px;
         }
+        
+        /* Image lazy loading placeholder */
+        img[data-src] {
+            filter: blur(10px);
+            transition: filter 0.3s;
+        }
+        
+        img[data-src].loaded {
+            filter: blur(0);
+        }
+        
+        /* Form Success Message */
+        .success-message {
+            display: none;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.5);
+            border-radius: 0.5rem;
+            color: #4ade80;
+            margin-top: 1rem;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Enhanced Performance */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body class="bg-dark text-slate-200">
-    <!-- Navigation (Fixed Header) -->
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Dark/Light Mode Toggle -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Navigation -->
     <nav class="fixed w-full bg-darker/90 backdrop-blur-md z-50 shadow-2xl shadow-indigo-900/10">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -327,14 +548,12 @@
                     Sanket's Portfolio
                 </a>
                 
-                <!-- Mobile menu button -->
                 <div class="md:hidden">
                     <button id="menu-toggle" class="text-slate-200 hover:text-primary focus:outline-none p-2 rounded-lg bg-slate-800">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-6 lg:space-x-8 font-medium">
                     <a href="#home" class="nav-link active"><i data-lucide="home" class="w-5 h-5 mr-1"></i>Home</a>
                     <a href="#about" class="nav-link"><i data-lucide="user" class="w-5 h-5 mr-1"></i>About</a>
@@ -347,7 +566,6 @@
                 </div>
             </div>
             
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2 bg-slate-900 rounded-lg shadow-xl">
                 <a href="#home" class="block py-3 px-4 nav-link active hover:bg-slate-800 rounded-t-lg">Home</a>
                 <a href="#about" class="block py-3 px-4 nav-link hover:bg-slate-800">About</a>
@@ -362,7 +580,7 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-24 pb-12">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 mb-12 md:mb-0">
+            <div class="md:w-1/2 mb-12 md:mb-0 fade-in-left">
                 <h1 class="text-4xl lg:text-7xl font-bold mb-4 leading-tight">
                     Namaste, I'm <span class="gradient-text">Kumar Sanket</span>
                 </h1>
@@ -395,13 +613,13 @@
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2 flex justify-center">
+            <div class="md:w-1/2 flex justify-center fade-in-right">
                 <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
                     <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-2xl opacity-20"></div>
-                    <img src="home.jpg" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/0f172a/e2e8f0?text=Profile+Pic';"
-                         alt="Profile Placeholder" 
-                         class="relative w-full h-full object-cover rounded-full border-4 border-slate-800 floating shadow-2xl shadow-indigo-500/10">
+                    <img data-src="home.jpg" 
+                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%230f172a' width='400' height='400'/%3E%3C/svg%3E"
+                         alt="Profile" 
+                         class="relative w-full h-full object-cover rounded-full border-4 border-slate-800 floating shadow-2xl shadow-indigo-500/10 lazy-img">
                 </div>
             </div>
         </div>
@@ -410,24 +628,23 @@
     <!-- About Section -->
     <section id="about" class="py-20 bg-darker">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             </div>
             
             <div class="flex flex-col md:flex-row items-start">
-                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center sticky top-24 md:mr-8">
-                    <!-- UPDATED: Significantly increased the maximum size to 32rem (512px) on large screens for a bigger visual impact -->
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center sticky top-24 md:mr-8 fade-in-left">
                     <div class="relative w-80 h-80 md:w-96 md:h-96 lg:w-[32rem] lg:h-[32rem]"> 
                         <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-secondary blur-2xl opacity-10"></div>
-                        <img src="about.jpg" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/0f172a/e2e8f0?text=About+Image';"
-                             alt="About Placeholder" 
-                             class="relative w-full h-full object-cover rounded-2xl border-4 border-slate-800 shadow-xl">
+                        <img data-src="about.jpg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%230f172a' width='400' height='400'/%3E%3C/svg%3E"
+                             alt="About" 
+                             class="relative w-full h-full object-cover rounded-2xl border-4 border-slate-800 shadow-xl lazy-img">
                     </div>
                 </div>
                 
-                <div class="md:w-2/3 md:pl-12">
+                <div class="md:w-2/3 md:pl-12 fade-in-right">
                     <h3 class="text-2xl font-bold mb-4 text-primary">Transforming Data into Decisions</h3>
                     <p class="text-slate-400 text-lg mb-8">
                         I am currently pursuing my Bachelor of Technology in Computer Science and Engineering and have developed a strong interest in working with data through tools such as SQL, Python, and data visualization platforms. I enjoy uncovering patterns, drawing insights, and presenting them in a way that tells a clear and meaningful story.
@@ -463,46 +680,25 @@
                         <a href="#contact" class="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 transition">Let's Connect</a>
                     </div>
 
-                    <!-- Experience Timeline -->
                     <div class="mt-16">
                         <h3 class="text-3xl font-bold mb-10 text-center md:text-left">My <span class="gradient-text">Education</span></h3>
                         
                         <div class="relative max-w-3xl">
                             <div class="absolute left-1/2 h-full w-0.5 bg-slate-700 transform -translate-x-1/2 md:block hidden"></div>
-                            
-                            <div class="mb-8 flex justify-between items-start w-full timeline-item">
+                            <div class="mb-8 flex justify-between items-start w-full timeline-item fade-in">
                                 <div class="order-1 md:w-5/12 hidden md:block"></div>
                                 <div class="order-1 w-full md:w-5/12 p-5 bg-slate-800 rounded-xl shadow-xl card-hover">
                                     <h4 class="text-xl font-bold mb-2 text-primary">B.Tech (Computer Science and Engineering)</h4>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">Amity University, Uttar Pradesh</p>
+                                    <p class="text-sm text-slate-400 mb-2 font-mono">Amity University, Uttar Pradesh, India</p>
                                     <p class="text-sm text-slate-400 mb-2 font-mono">• 2022 - 2026</p>
-                                    <!--<p class="text-slate-300">
-                                        Led advanced analytics projects using Python (Pandas/NumPy) to model customer behavior, resulting in a 15% improvement in marketing ROI. Developed Power BI dashboards for executive reporting.
-                                    </p> -->
                                 </div>
                             </div>
-                            
-                            <div class="mb-8 flex justify-between items-start w-full timeline-item md:flex-row-reverse">
+                            <div class="mb-8 flex justify-between items-start w-full timeline-item fade-in">
                                 <div class="order-1 md:w-5/12 hidden md:block"></div>
                                 <div class="order-1 w-full md:w-5/12 p-5 bg-slate-800 rounded-xl shadow-xl card-hover">
-                                    <h4 class="text-xl font-bold mb-2 text-primary">Senior Secondary</h4>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">Modern School, Noida</p>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2021 - 2022</p>
-                                    <!--<p class="text-slate-300">
-                                        Managed end-to-end reporting solutions, optimized complex SQL queries for performance, and provided strategic reports on operational efficiency, saving 10 hours of manual work per week.
-                                    </p> -->
-                                </div>
-                            </div>
-                            
-                            <div class="mb-8 flex justify-between items-start w-full timeline-item">
-                                <div class="order-1 md:w-5/12 hidden md:block"></div>
-                                <div class="order-1 w-full md:w-5/12 p-5 bg-slate-800 rounded-xl shadow-xl card-hover">
-                                    <h4 class="text-xl font-bold mb-2 text-primary">Secondary</h4>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">Modern School, Noida</p>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2019 - 2020</p>
-                                    <!--<p class="text-slate-300">
-                                        Developed and maintained responsive marketing sites using HTML, CSS, and basic JavaScript. Gained foundational experience in UI/UX principles.
-                                    </p>-->
+                                    <h4 class="text-xl font-bold mb-2 text-primary">Higher Secondary Education(Grade 12)</h4>
+                                    <p class="text-sm text-slate-400 mb-2 font-mono">Modern School, Noida, India</p>
+                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2020 - 2022</p>
                                 </div>
                             </div>
                         </div>
@@ -516,7 +712,7 @@
     <!-- Projects Section -->
     <section id="projects" class="py-20 bg-darker">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Projects</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             </div>
@@ -524,12 +720,12 @@
             <div class="flex space-x-8 overflow-x-auto pb-6 custom-scrollbar snap-x snap-mandatory">
 
                 <!-- Project 1 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover">
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="Uber Supply Demand Gap Analysis.jpg" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x300/1e293b/e2e8f0?text=Uber+Analysis';"
+                        <img data-src="Uber Supply Demand Gap Analysis.jpg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Uber Supply Demand Gap Analysis" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Uber Supply Demand Gap Analysis</h3>
@@ -553,12 +749,12 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover">
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="Flipkart Big Billion Days Sales Dashboard.jpg" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x300/1e293b/e2e8f0?text=Task+Manager';"
+                        <img data-src="Flipkart Big Billion Days Sales Dashboard.jpg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Task Management App" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Flipkart Big Billion Days Sales Dashboard</h3>
@@ -580,12 +776,12 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover">
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="Global Layoffs Analysis.jpg" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x300/1e293b/e2e8f0?text=Marketing+Dashboard';"
+                        <img data-src="Global Layoffs Analysis.jpg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Marketing Analytics Dashboard" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Global Layoffs Analysis</h3>
@@ -606,13 +802,12 @@
                     </div>
                 </div>
 
-                <!-- Repeat Project 1-3 multiple times as in original -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover">
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="Dubai Real Estate Intelligence Dashboard.jpg" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x300/1e293b/e2e8f0?text=Customer+Churn';"
+                        <img data-src="Dubai Real Estate Intelligence Dashboard.jpg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Customer Churn Prediction Model" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Dubai Real Estate Intelligence Dashboard</h3>
@@ -635,12 +830,12 @@
                     </div>
                 </div>
 
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover">
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="Customer Demographics Purchasing Analysis.jpg" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x300/1e293b/e2e8f0?text=Uber+Analysis';"
+                        <img data-src="Customer Demographics Purchasing Analysis.jpg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Uber Supply Demand Gap Analysis" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Customer Demographics Purchasing Analysis</h3>
@@ -661,12 +856,12 @@
                     </div>
                 </div>
 
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover">
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="Global Data Professionals Insights Dashboard.jpg" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x300/1e293b/e2e8f0?text=Uber+Analysis';"
+                        <img data-src="Global Data Professionals Insights Dashboard.jpg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Uber Supply Demand Gap Analysis" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Global Data Professionals Insights Dashboard</h3>
@@ -695,270 +890,131 @@
     <!-- Enhanced Skills Section -->
     <section id="skills" class="py-20 bg-dark">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             </div>
             
-            <!-- Technical Skills Row (Right to Left) -->
             <div class="skills-wrapper mb-8">
                 <div class="skills-track skills-track-right" id="tech-skills">
-                    <!-- Skills will be dynamically duplicated by JavaScript -->
                 </div>
             </div>
 
-            <!-- Soft Skills Row (Left to Right) -->
             <div class="skills-wrapper">
                 <div class="skills-track skills-track-left" id="soft-skills">
-                    <!-- Skills will be dynamically duplicated by JavaScript -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certificates Section (This is the correctly fixed section) -->
-        <section id="certificates" class="py-20 bg-dark">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Certifications</span></h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Certifications</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="flex space-x-8 overflow-x-auto pb-6 custom-scrollbar snap-x snap-mandatory">
+                
+                <!-- Certificate 1 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="Scouts.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Governer's Scout Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Governer's Scout Certificate</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Governer Uttar Pradesh</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+                
+                <!-- Certificate 11 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="BBD PowerBI.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Flipkart BBD PowerBI Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Flipkart BBD PowerBI</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Coding Ninjas</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+                
+                <!-- Certificate 12 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="IBM_Statistics_101.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Statistics 101 Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Statistics 101</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
                 </div>
 
-                <!-- Horizontal Scrolling Container for Certificates - THIS IS NOW CORRECTLY WRAPPING ALL 15 CARDS -->
-                <div class="flex space-x-8 overflow-x-auto pb-6 custom-scrollbar snap-x snap-mandatory">
+                <!-- Certificate 13 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="Microsoft_Power_BI.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Power BI Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
                     
-                    <!-- Certificate 1 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="Scouts.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Governer%27s+Scout+Cert';"
-                                alt="Governer's Scout Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Governer's Scout Certificate</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Governer Uttar Pradesh</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-
-                    <!-- Certificate 2 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="Career_Skills_in_Data_Analytics.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Career+Skills+in+DA';"
-                                alt="Career Skills In Data Analytics Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Career Skills In Data Analytics</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-
-                    <!-- Certificate 3 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="Learning_Data_Analytics_1_Foundations.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=DA+Foundations+1';"
-                                alt="Learning Data Analytics:1 Foundations Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics:1 Foundations</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-                    <!-- Certificate 4 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="Learning_Data_Analytics_2_Foundations.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=DA+Foundations+2';"
-                                alt="Learning Data Analytics Part 2: Extending and Applying Core Knowledge Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics Part 2: Extending and Applying Core Knowledge</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-
-                    <!-- Certificate 5 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="Microsoft_Data_Analysis.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=MS+DA+Essentials';"
-                                alt="Career Essentials in Data Analysis Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Career Essentials in Data Analysis</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Microsoft and LinkedIn</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-
-                    <!-- Certificate 6 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="IBM_Data_Fundamentals.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=IBM+Data+Fund';"
-                                alt="Data Fundamentals Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Data Fundamentals</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-
-                    <!-- Certificate 7 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="CISCO_Network_Basics.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=CISCO+Networking';"
-                                alt="Networking Basics Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Networking Basics</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Cisco</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Power BI</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Simplilearn [Microsoft]</p>
                     
-                    <!-- Certificate 8 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="IBM_SQL_and_Relational_Databases_101.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=SQL+101';"
-                                alt="SQL and Relational Databases 101 Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">SQL and Relational Databases 101</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-                    
-                    <!-- Certificate 9 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="IBM_Data_Analysis_Using_Python.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Python+DA';"
-                                alt="IBM Data Analysis Using Python Certificate" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Data Analysis Using Python</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-                    
-                    <!-- Certificate 10 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="CISCO_Introduction_to_Packet_Tracer.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Packet+Tracer+Intro';"
-                                alt="CISCO Introduction to Packet Tracer Certificate" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Introduction to Packet Tracer</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: CISCO</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-                    
-                    <!-- Certificate 11 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="BBD PowerBI.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Flipkart+BBD+PowerBI';"
-                                alt="Flipkart BBD PowerBI Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Flipkart BBD PowerBI</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Coding Ninjas</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-                    
-                    <!-- Certificate 12 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="IBM_Statistics_101.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Stats+101';"
-                                alt="Statistics 101 Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Statistics 101</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
 
-                    <!-- Certificate 13 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="Microsoft_Power_BI.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Power+BI+Cert';"
-                                alt="Power BI Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Power BI</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Simplilearn [Microsoft]</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
+                <!-- Certificate 14 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="young_turks25.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Young Turks25 Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Young Turks25</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Naukri Campus</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
 
-                    <!-- Certificate 14 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="young_turks25.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=Young+Turks25';"
-                                alt="Young Turks25 Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Young Turks25</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: Naukri Campus</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
+                <!-- Certificate 15 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="nasscom_Digital_101_Journey.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Digital 101 Journey Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Digital 101 Journey</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: nasscom</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
 
-                    <!-- Certificate 15 -->
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover">
-                        <img src="nasscom_Digital_101_Journey.jpg" 
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x200/374151/d1d5db?text=nasscom+Digital+101';"
-                                alt="Digital 101 Journey Certificate Image" 
-                                class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700">
-                        
-                        <h3 class="text-xl font-bold mb-1 text-slate-100">Digital 101 Journey</h3>
-                        <p class="text-slate-400 text-sm mb-3">Issued By: nasscom</p>
-                        
-                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                        </a>
-                    </div>
-
-                </div> <!-- Correctly positioned End Horizontal Scrolling Container -->
             </div>
-        </section>
+        </div>
+    </section>
     
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-darker">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             </div>
@@ -966,10 +1022,10 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
                 
                 <!-- Contact Info Column -->
-                <div class="lg:col-span-1">
+                <div class="lg:col-span-1 fade-in-left">
                     <h3 class="text-2xl font-bold mb-6 text-primary">Contact Information</h3>
                     <p class="text-slate-400 mb-8">
-                        Eager to kickstart my career in data and tech! Open to internships, junior roles. Let’s build something great together.
+                        Eager to kickstart my career in data and tech! Open to internships, junior roles. Let's build something great together.
                     </p>
                     
                     <div class="space-y-6">
@@ -1006,30 +1062,33 @@
                 </div>
 
                 <!-- Contact Form Column -->
-                <div class="lg:col-span-2">
+                <div class="lg:col-span-2 fade-in-right">
                     <h3 class="text-2xl font-bold mb-6 text-primary">Send Me a Message</h3>
-                    <form class="space-y-6 bg-dark p-8 rounded-xl shadow-2xl">
+                    <form id="contact-form" class="space-y-6 bg-dark p-8 rounded-xl shadow-2xl">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block mb-2 font-medium">Your Name</label>
-                                <input type="text" id="name" placeholder="K S" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                                <input type="text" id="name" name="name" placeholder="K S" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
                             </div>
                             <div>
                                 <label for="email" class="block mb-2 font-medium">Your Email</label>
-                                <input type="email" id="email" placeholder="k.s@example.com" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                                <input type="email" id="email" name="email" placeholder="k.s@example.com" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
                             </div>
                         </div>
                         <div>
                             <label for="subject" class="block mb-2 font-medium">Subject</label>
-                            <input type="text" id="subject" placeholder="" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
                         </div>
                         <div>
                             <label for="message" class="block mb-2 font-medium">Message</label>
-                            <textarea id="message" rows="6" placeholder="Tell me more about your project..." class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none resize-none" required></textarea>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell me more about your project..." class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none resize-none" required></textarea>
                         </div>
                         <button type="submit" class="px-8 py-3 rounded-full btn-primary font-medium w-full text-lg">
-                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            <span id="button-text">Send Message</span> <i class="fas fa-paper-plane ml-2"></i>
                         </button>
+                        <div id="success-message" class="success-message">
+                            <i class="fas fa-check-circle mr-2"></i> Message sent successfully! I'll get back to you soon.
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1045,7 +1104,6 @@
                     <p class="text-slate-400 mt-2 text-sm">Made with <i class="fas fa-heart text-red-500"></i> by Kumar Sanket</p>
                 </div>
                 
-                <!-- Footer Navigation -->
                 <div class="flex space-x-6 mb-6 md:mb-0 text-slate-400">
                     <a href="#home" class="hover:text-primary transition">Home</a>
                     <a href="#about" class="hover:text-primary transition">About</a>
@@ -1053,7 +1111,6 @@
                     <a href="#contact" class="hover:text-primary transition">Contact</a>
                 </div>
 
-                <!-- Footer Social Icons -->
                 <div class="flex space-x-4">
                     <a href="https://github.com/KumaarSanket" class="text-slate-400 hover:text-primary transition w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700">
                         <i class="fab fa-github text-xl"></i>
@@ -1074,14 +1131,81 @@
     </footer>
     
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white shadow-xl hover:bg-secondary transition hidden focus:outline-none">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white shadow-xl hover:bg-secondary transition hidden focus:outline-none z-50">
         <i class="fas fa-arrow-up text-lg"></i>
     </button>
     
     <script>
-        // JavaScript for interactivity
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').classList.add('hidden');
+            }, 500);
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
         
-        // 1. Mobile menu toggle
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Lazy Loading Images
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+
+        // Scroll Animations
+        const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+        
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        fadeElements.forEach(el => scrollObserver.observe(el));
+
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -1097,7 +1221,7 @@
             }
         });
         
-        // 2. Smooth scrolling for navigation links
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href').length > 1) {
@@ -1122,7 +1246,7 @@
             });
         });
         
-        // 3. Update active navigation link and show/hide back-to-top button on scroll
+        // Update active navigation link and show/hide back-to-top button on scroll
         const allSections = document.querySelectorAll('section');
         const backToTopButton = document.getElementById('back-to-top');
 
@@ -1154,7 +1278,7 @@
         window.addEventListener('scroll', updateNavAndButton);
         window.addEventListener('load', updateNavAndButton);
         
-        // 4. Back to top button functionality
+        // Back to top button functionality
         document.getElementById('back-to-top').addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1162,7 +1286,7 @@
             });
         });
 
-        // 5. Enhanced Skills Section - Dynamic Duplication for Seamless Scroll
+        // Enhanced Skills Section - Dynamic Duplication
         const techSkillsData = [
             { icon: 'fab fa-python', color: 'text-yellow-400', name: 'Python', level: 90 },
             { icon: 'fas fa-database', color: 'text-blue-500', name: 'SQL', level: 95 },
@@ -1201,17 +1325,65 @@
             const techTrack = document.getElementById('tech-skills');
             const softTrack = document.getElementById('soft-skills');
             
-            // Create HTML for skills
             let techHTML = techSkillsData.map(createSkillBox).join('');
             let softHTML = softSkillsData.map(createSkillBox).join('');
             
-            // Duplicate content 3 times for seamless infinite loop
             techTrack.innerHTML = techHTML + techHTML + techHTML;
             softTrack.innerHTML = softHTML + softHTML + softHTML;
         }
 
-        // Initialize skills on page load
         window.addEventListener('load', populateSkills);
+
+        // Contact Form Functionality with EmailJS
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        const buttonText = document.getElementById('button-text');
+        
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+            
+            // Change button text to show loading
+            buttonText.textContent = 'Sending...';
+            
+            try {
+                // Using FormSubmit.co - a free form backend service
+                const response = await fetch('https://formsubmit.co/ajax/ks.studentamity@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    successMessage.classList.add('show');
+                    contactForm.reset();
+                    buttonText.textContent = 'Send Message';
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 5000);
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message. Please try emailing directly at ks.studentamity@gmail.com');
+                buttonText.textContent = 'Send Message';
+            }
+        });
     </script>
 </body>
 </html>

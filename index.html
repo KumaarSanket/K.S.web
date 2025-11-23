@@ -112,14 +112,10 @@
             background-color: rgba(248, 250, 252, 0.9) !important;
         }
         
-        /* Dark/Light Mode Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 100px;
-            right: 2rem;
-            z-index: 1000;
-            width: 50px;
-            height: 50px;
+        /* Dark/Light Mode Toggle in Navbar */
+        .theme-toggle-nav {
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #0ea5e9, #7e22ce);
             border-radius: 50%;
             display: flex;
@@ -128,15 +124,17 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
             transition: all 0.3s ease;
+            border: none;
+            outline: none;
         }
         
-        .theme-toggle:hover {
-            transform: translateY(-3px);
+        .theme-toggle-nav:hover {
+            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
         }
         
-        .theme-toggle i {
-            font-size: 1.25rem;
+        .theme-toggle-nav i {
+            font-size: 1rem;
             color: white;
         }
         
@@ -322,12 +320,6 @@
             .relative.max-w-3xl.mx-auto .absolute {
                 left: 7.5px;
                 transform: none;
-            }
-            
-            .theme-toggle {
-                right: 1rem;
-                width: 45px;
-                height: 45px;
             }
         }
 
@@ -535,18 +527,19 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Dark/Light Mode Toggle -->
-    <div class="theme-toggle" id="theme-toggle" title="Toggle Theme">
-        <i class="fas fa-moon"></i>
-    </div>
-
     <!-- Navigation -->
     <nav class="fixed w-full bg-darker/90 backdrop-blur-md z-50 shadow-2xl shadow-indigo-900/10">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="#home" class="text-2xl font-extrabold gradient-text tracking-wider">
-                    Sanket's Portfolio
-                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="#home" class="text-2xl font-extrabold gradient-text tracking-wider">
+                        Sanket's Portfolio
+                    </a>
+                    <img data-src="logo.png" 
+                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Crect fill='%230f172a' width='50' height='50'/%3E%3C/svg%3E"
+                         alt="KS Logo" 
+                         class="h-10 w-10 object-contain lazy-img">
+                </div>
                 
                 <div class="md:hidden">
                     <button id="menu-toggle" class="text-slate-200 hover:text-primary focus:outline-none p-2 rounded-lg bg-slate-800">
@@ -554,25 +547,37 @@
                     </button>
                 </div>
                 
-                <div class="hidden md:flex space-x-6 lg:space-x-8 font-medium">
-                    <a href="#home" class="nav-link active"><i data-lucide="home" class="w-5 h-5 mr-1"></i>Home</a>
-                    <a href="#about" class="nav-link"><i data-lucide="user" class="w-5 h-5 mr-1"></i>About</a>
-                    <a href="#projects" class="nav-link"><i data-lucide="folder" class="w-5 h-5 mr-1"></i>Projects</a>
-                    <a href="#skills" class="nav-link"><i data-lucide="award" class="w-5 h-5 mr-1"></i>Skills</a>
-                    <a href="#certificates" class="nav-link"><i data-lucide="scroll-text" class="w-5 h-5 mr-1"></i>Certificates</a>
-                    <a href="#contact" class="nav-link"><i data-lucide="link" class="w-5 h-5 mr-1"></i>Contact</a>
-                 <a href="Resume.pdf" target="_blank" class="bg-orange-500 text-gray-900 hover:bg-orange-600 transition duration-300 rounded-lg px-4 py-2 text-lg font-semibold shadow-md">
-                    <i data-lucide="file-text" class="w-5 h-5 inline mr-1"></i> Resume</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-medium">
+                    <a href="#home" class="nav-link active flex items-center"><i class="fas fa-home w-5 h-5 mr-2"></i>Home</a>
+                    <a href="#about" class="nav-link flex items-center"><i class="fas fa-user w-5 h-5 mr-2"></i>About</a>
+                    <a href="#projects" class="nav-link flex items-center"><i class="fas fa-folder w-5 h-5 mr-2"></i>Projects</a>
+                    <a href="#skills" class="nav-link flex items-center"><i class="fas fa-award w-5 h-5 mr-2"></i>Skills</a>
+                    <a href="#certificates" class="nav-link flex items-center"><i class="fas fa-certificate w-5 h-5 mr-2"></i>Certificates</a>
+                    <a href="#contact" class="nav-link flex items-center"><i class="fas fa-envelope w-5 h-5 mr-2"></i>Contact</a>
+                    
+                    <!-- Dark/Light Mode Toggle in Navbar -->
+                    <button id="theme-toggle" class="theme-toggle-nav" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <a href="Resume.pdf" target="_blank" class="bg-orange-500 text-gray-900 hover:bg-orange-600 transition duration-300 rounded-lg px-4 py-2 text-lg font-semibold shadow-md flex items-center">
+                        <i class="fas fa-file-text w-5 h-5 mr-2"></i> Resume
+                    </a>
                 </div>
             </div>
             
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2 bg-slate-900 rounded-lg shadow-xl">
-                <a href="#home" class="block py-3 px-4 nav-link active hover:bg-slate-800 rounded-t-lg">Home</a>
-                <a href="#about" class="block py-3 px-4 nav-link hover:bg-slate-800">About</a>
-                <a href="#projects" class="block py-3 px-4 nav-link hover:bg-slate-800">Projects</a>
-                <a href="#skills" class="block py-3 px-4 nav-link hover:bg-slate-800">Skills</a>
-                <a href="#certificates" class="block py-3 px-4 nav-link hover:bg-slate-800">Certificates</a>
-                <a href="#contact" class="block py-3 px-4 nav-link hover:bg-slate-800 rounded-b-lg">Contact</a>
+                <a href="#home" class="block py-3 px-4 nav-link active hover:bg-slate-800 rounded-t-lg flex items-center"><i class="fas fa-home mr-3"></i>Home</a>
+                <a href="#about" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-user mr-3"></i>About</a>
+                <a href="#projects" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-folder mr-3"></i>Projects</a>
+                <a href="#skills" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-award mr-3"></i>Skills</a>
+                <a href="#certificates" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-certificate mr-3"></i>Certificates</a>
+                <a href="#contact" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-envelope mr-3"></i>Contact</a>
+                <div class="px-4 py-3">
+                    <button id="theme-toggle-mobile" class="theme-toggle-nav w-full justify-center" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -698,7 +703,7 @@
                                 <div class="order-1 w-full md:w-5/12 p-5 bg-slate-800 rounded-xl shadow-xl card-hover">
                                     <h4 class="text-xl font-bold mb-2 text-primary">Higher Secondary Education(Grade 12)</h4>
                                     <p class="text-sm text-slate-400 mb-2 font-mono">Modern School, Noida, India</p>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2020 - 2022</p>
+                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2021 - 2022</p>
                                 </div>
                             </div>
                         </div>
@@ -931,6 +936,136 @@
                         <i class="fas fa-external-link-alt mr-1"></i> See Certificate
                     </a>
                 </div>
+
+                <!-- Certificate 2 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="Career_Skills_in_Data_Analytics.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Career Skills In Data Analytics Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Career Skills In Data Analytics</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="Learning_Data_Analytics_1_Foundations.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Learning Data Analytics:1 Foundations Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics:1 Foundations</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+                <!-- Certificate 4 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="Learning_Data_Analytics_2_Foundations.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Learning Data Analytics Part 2: Extending and Applying Core Knowledge Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics Part 2: Extending and Applying Core Knowledge</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="Microsoft_Data_Analysis.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Career Essentials in Data Analysis Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Career Essentials in Data Analysis</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Microsoft and LinkedIn</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+
+                <!-- Certificate 6 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="IBM_Data_Fundamentals.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Data Fundamentals Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Data Fundamentals</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+
+                <!-- Certificate 7 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="CISCO_Network_Basics.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="Networking Basics Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Networking Basics</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Cisco</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+                
+                <!-- Certificate 8 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="IBM_SQL_and_Relational_Databases_101.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="SQL and Relational Databases 101 Certificate Image" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">SQL and Relational Databases 101</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+                
+                <!-- Certificate 9 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="IBM_Data_Analysis_Using_Python.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="IBM Data Analysis Using Python Certificate" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Data Analysis Using Python</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
+                    
+                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                    </a>
+                </div>
+                
+                <!-- Certificate 10 -->
+                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                    <img data-src="CISCO_Introduction_to_Packet_Tracer.jpg" 
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                            alt="CISCO Introduction to Packet Tracer Certificate" 
+                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    
+                    <h3 class="text-xl font-bold mb-1 text-slate-100">Introduction to Packet Tracer</h3>
+                    <p class="text-slate-400 text-sm mb-3">Issued By: CISCO</p>
+                </div>
                 
                 <!-- Certificate 11 -->
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
@@ -1145,8 +1280,10 @@
 
         // Dark/Light Mode Toggle
         const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
         const body = document.body;
         const themeIcon = themeToggle.querySelector('i');
+        const themeIconMobile = themeToggleMobile.querySelector('i');
         
         // Check for saved theme preference
         const savedTheme = localStorage.getItem('theme');
@@ -1154,21 +1291,30 @@
             body.classList.add('light-mode');
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
+            themeIconMobile.classList.remove('fa-moon');
+            themeIconMobile.classList.add('fa-sun');
         }
         
-        themeToggle.addEventListener('click', function() {
+        function toggleTheme() {
             body.classList.toggle('light-mode');
             
             if (body.classList.contains('light-mode')) {
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
+                themeIconMobile.classList.remove('fa-moon');
+                themeIconMobile.classList.add('fa-sun');
                 localStorage.setItem('theme', 'light');
             } else {
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
+                themeIconMobile.classList.remove('fa-sun');
+                themeIconMobile.classList.add('fa-moon');
                 localStorage.setItem('theme', 'dark');
             }
-        });
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
 
         // Lazy Loading Images
         const lazyImages = document.querySelectorAll('img[data-src]');

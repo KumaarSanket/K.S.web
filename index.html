@@ -472,6 +472,120 @@
             border-radius: 3px;
         }
         
+        /* Certificates Auto-Scroll */
+        .certificates-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        
+        .certificates-track {
+            display: flex;
+            gap: 2rem;
+            width: fit-content;
+            animation: scroll-certificates 60s linear infinite;
+            will-change: transform;
+        }
+        
+        .certificates-track.paused {
+            animation-play-state: paused;
+        }
+        
+        .certificates-track.manual-scroll {
+            animation: none;
+        }
+        
+        @keyframes scroll-certificates {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .certificate-card {
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        /* Certificate Modal */
+        .certificate-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .certificate-modal.active {
+            display: flex;
+        }
+        
+        .certificate-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease-out;
+        }
+        
+        .certificate-modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
+        }
+        
+        .certificate-modal-close {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            background: linear-gradient(135deg, #0ea5e9, #7e22ce);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate-modal-close:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
         /* Image lazy loading placeholder */
         img[data-src] {
             filter: blur(10px);
@@ -690,20 +804,13 @@
                         
                         <div class="relative max-w-3xl">
                             <div class="absolute left-1/2 h-full w-0.5 bg-slate-700 transform -translate-x-1/2 md:block hidden"></div>
+                            
                             <div class="mb-8 flex justify-between items-start w-full timeline-item fade-in">
                                 <div class="order-1 md:w-5/12 hidden md:block"></div>
                                 <div class="order-1 w-full md:w-5/12 p-5 bg-slate-800 rounded-xl shadow-xl card-hover">
-                                    <h4 class="text-xl font-bold mb-2 text-primary">B.Tech (Computer Science and Engineering)</h4>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">Amity University, Uttar Pradesh, India</p>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2022 - 2026</p>
-                                </div>
-                            </div>
-                            <div class="mb-8 flex justify-between items-start w-full timeline-item fade-in">
-                                <div class="order-1 md:w-5/12 hidden md:block"></div>
-                                <div class="order-1 w-full md:w-5/12 p-5 bg-slate-800 rounded-xl shadow-xl card-hover">
-                                    <h4 class="text-xl font-bold mb-2 text-primary">Higher Secondary Education(Grade 12)</h4>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">Modern School, Noida, India</p>
-                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2021 - 2022</p>
+                                    <h4 class="text-xl font-bold mb-2 text-primary">Secondary</h4>
+                                    <p class="text-sm text-slate-400 mb-2 font-mono">Modern School, Noida</p>
+                                    <p class="text-sm text-slate-400 mb-2 font-mono">• 2019 - 2020</p>
                                 </div>
                             </div>
                         </div>
@@ -920,227 +1027,248 @@
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             </div>
 
-            <div class="flex space-x-8 overflow-x-auto pb-6 custom-scrollbar snap-x snap-mandatory">
+            <div class="certificates-container">
+                <div class="certificates-track" id="certificates-track">
                 
-                <!-- Certificate 1 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="Scouts.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Governer's Scout Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Governer's Scout Certificate</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Governer Uttar Pradesh</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 1 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="Scouts.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Governer's Scout Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Governer's Scout Certificate</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Governer Uttar Pradesh</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 2 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="Career_Skills_in_Data_Analytics.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Career Skills In Data Analytics Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Career Skills In Data Analytics</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 2 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="Career_Skills_in_Data_Analytics.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Career Skills In Data Analytics Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Career Skills In Data Analytics</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 3 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="Learning_Data_Analytics_1_Foundations.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Learning Data Analytics:1 Foundations Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    <!-- Certificate 3 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="Learning_Data_Analytics_1_Foundations.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Learning Data Analytics:1 Foundations Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics:1 Foundations</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
                     
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics:1 Foundations</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
-                <!-- Certificate 4 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="Learning_Data_Analytics_2_Foundations.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Learning Data Analytics Part 2: Extending and Applying Core Knowledge Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics Part 2: Extending and Applying Core Knowledge</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 4 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="Learning_Data_Analytics_2_Foundations.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Learning Data Analytics Part 2: Extending and Applying Core Knowledge Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Learning Data Analytics Part 2: Extending and Applying Core Knowledge</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: LinkedIn Learning</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 5 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="Microsoft_Data_Analysis.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Career Essentials in Data Analysis Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Career Essentials in Data Analysis</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Microsoft and LinkedIn</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 5 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="Microsoft_Data_Analysis.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Career Essentials in Data Analysis Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Career Essentials in Data Analysis</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Microsoft and LinkedIn</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 6 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="IBM_Data_Fundamentals.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Data Fundamentals Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Data Fundamentals</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 6 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="IBM_Data_Fundamentals.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Data Fundamentals Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Data Fundamentals</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 7 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="CISCO_Network_Basics.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Networking Basics Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    <!-- Certificate 7 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="CISCO_Network_Basics.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Networking Basics Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Networking Basics</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Cisco</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
                     
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Networking Basics</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Cisco</p>
+                    <!-- Certificate 8 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="IBM_SQL_and_Relational_Databases_101.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="SQL and Relational Databases 101 Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">SQL and Relational Databases 101</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
                     
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
-                
-                <!-- Certificate 8 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="IBM_SQL_and_Relational_Databases_101.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="SQL and Relational Databases 101 Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    <!-- Certificate 9 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="IBM_Data_Analysis_Using_Python.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="IBM Data Analysis Using Python Certificate" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Data Analysis Using Python</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
                     
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">SQL and Relational Databases 101</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
+                    <!-- Certificate 10 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="CISCO_Introduction_to_Packet_Tracer.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="CISCO Introduction to Packet Tracer Certificate" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Introduction to Packet Tracer</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: CISCO</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
                     
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
-                
-                <!-- Certificate 9 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="IBM_Data_Analysis_Using_Python.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="IBM Data Analysis Using Python Certificate" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                    <!-- Certificate 11 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="BBD PowerBI.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Flipkart BBD PowerBI Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Flipkart BBD PowerBI</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Coding Ninjas</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
                     
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Data Analysis Using Python</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: IBM</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
-                
-                <!-- Certificate 10 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="CISCO_Introduction_to_Packet_Tracer.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="CISCO Introduction to Packet Tracer Certificate" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Introduction to Packet Tracer</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: CISCO</p>
-                </div>
-                
-                <!-- Certificate 11 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="BBD PowerBI.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Flipkart BBD PowerBI Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Flipkart BBD PowerBI</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Coding Ninjas</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
-                
-                <!-- Certificate 12 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="IBM_Statistics_101.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Statistics 101 Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Statistics 101</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 12 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="IBM_Statistics_101.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Statistics 101 Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Statistics 101</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Cognitive Class [IBM]</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 13 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="Microsoft_Power_BI.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Power BI Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Power BI</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Simplilearn [Microsoft]</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 13 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="Microsoft_Power_BI.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Power BI Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Power BI</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Simplilearn [Microsoft]</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 14 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="young_turks25.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Young Turks25 Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Young Turks25</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: Naukri Campus</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
-                </div>
+                    <!-- Certificate 14 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="young_turks25.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Young Turks25 Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Young Turks25</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: Naukri Campus</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
 
-                <!-- Certificate 15 -->
-                <div class="flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
-                    <img data-src="nasscom_Digital_101_Journey.jpg" 
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
-                            alt="Digital 101 Journey Certificate Image" 
-                            class="w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
-                    
-                    <h3 class="text-xl font-bold mb-1 text-slate-100">Digital 101 Journey</h3>
-                    <p class="text-slate-400 text-sm mb-3">Issued By: nasscom</p>
-                    
-                    <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
-                        <i class="fas fa-external-link-alt mr-1"></i> See Certificate
-                    </a>
+                    <!-- Certificate 15 -->
+                    <div class="certificate-card flex-shrink-0 w-80 lg:w-96 snap-start p-6 bg-slate-800 rounded-xl shadow-2xl project-card card-hover fade-in">
+                        <img data-src="nasscom_Digital_101_Journey.jpg" 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%23374151' width='400' height='200'/%3E%3C/svg%3E"
+                                alt="Digital 101 Journey Certificate Image" 
+                                class="certificate-image w-full h-auto rounded-lg mb-4 shadow-lg object-cover border border-slate-700 lazy-img">
+                        
+                        <h3 class="text-xl font-bold mb-1 text-slate-100">Digital 101 Journey</h3>
+                        <p class="text-slate-400 text-sm mb-3">Issued By: nasscom</p>
+                        
+                        <a href="#" class="text-primary hover:text-secondary text-sm font-medium border border-primary/50 rounded-full px-4 py-2 inline-block hover:bg-primary/10 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> See Certificate
+                        </a>
+                    </div>
+
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certificate Modal -->
+    <div class="certificate-modal" id="certificate-modal">
+        <div class="certificate-modal-content">
+            <button class="certificate-modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="" alt="Certificate" id="modal-image">
+        </div>
+    </div>
 
             </div>
         </div>
@@ -1479,6 +1607,150 @@
         }
 
         window.addEventListener('load', populateSkills);
+
+        // Certificates Auto-Scroll Functionality
+        const certificatesTrack = document.getElementById('certificates-track');
+        const certificateCards = document.querySelectorAll('.certificate-card');
+        const certificateModal = document.getElementById('certificate-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalClose = document.getElementById('modal-close');
+        
+        // Duplicate certificates for seamless infinite scroll
+        function duplicateCertificates() {
+            const allCertificates = Array.from(certificateCards);
+            allCertificates.forEach(card => {
+                const clone = card.cloneNode(true);
+                certificatesTrack.appendChild(clone);
+            });
+            
+            // Re-attach event listeners to cloned cards
+            attachCertificateListeners();
+        }
+        
+        // Attach event listeners to certificate cards
+        function attachCertificateListeners() {
+            const allCards = document.querySelectorAll('.certificate-card');
+            
+            allCards.forEach(card => {
+                // Pause on hover
+                card.addEventListener('mouseenter', () => {
+                    certificatesTrack.classList.add('paused');
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    if (!certificatesTrack.classList.contains('manual-scroll')) {
+                        certificatesTrack.classList.remove('paused');
+                    }
+                });
+                
+                // Click on image to open modal
+                const certImage = card.querySelector('.certificate-image');
+                if (certImage) {
+                    certImage.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const imgSrc = certImage.src;
+                        modalImage.src = imgSrc;
+                        certificateModal.classList.add('active');
+                        certificatesTrack.classList.add('paused');
+                        certificatesTrack.classList.add('manual-scroll');
+                    });
+                }
+            });
+        }
+        
+        // Manual scroll detection
+        let isScrolling;
+        const certificatesContainer = document.querySelector('.certificates-container');
+        
+        certificatesContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            certificatesTrack.classList.add('manual-scroll');
+            certificatesTrack.classList.add('paused');
+            
+            // Scroll horizontally
+            certificatesTrack.scrollLeft += e.deltaY;
+            
+            // Clear timeout for auto-resume
+            clearTimeout(isScrolling);
+            
+            // Resume auto-scroll after 3 seconds of inactivity
+            isScrolling = setTimeout(() => {
+                certificatesTrack.classList.remove('manual-scroll');
+                certificatesTrack.classList.remove('paused');
+            }, 3000);
+        }, { passive: false });
+        
+        // Touch/drag for manual scroll
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+        
+        certificatesTrack.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - certificatesTrack.offsetLeft;
+            scrollLeft = certificatesTrack.scrollLeft;
+            certificatesTrack.classList.add('manual-scroll');
+            certificatesTrack.classList.add('paused');
+            certificatesTrack.style.cursor = 'grabbing';
+        });
+        
+        certificatesTrack.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                certificatesTrack.style.cursor = 'grab';
+            }
+        });
+        
+        certificatesTrack.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                certificatesTrack.style.cursor = 'grab';
+                
+                // Resume auto-scroll after 3 seconds
+                setTimeout(() => {
+                    certificatesTrack.classList.remove('manual-scroll');
+                    certificatesTrack.classList.remove('paused');
+                }, 3000);
+            }
+        });
+        
+        certificatesTrack.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - certificatesTrack.offsetLeft;
+            const walk = (x - startX) * 2;
+            certificatesTrack.scrollLeft = scrollLeft - walk;
+        });
+        
+        // Modal close functionality
+        modalClose.addEventListener('click', () => {
+            certificateModal.classList.remove('active');
+            certificatesTrack.classList.remove('manual-scroll');
+            certificatesTrack.classList.remove('paused');
+        });
+        
+        certificateModal.addEventListener('click', (e) => {
+            if (e.target === certificateModal) {
+                certificateModal.classList.remove('active');
+                certificatesTrack.classList.remove('manual-scroll');
+                certificatesTrack.classList.remove('paused');
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && certificateModal.classList.contains('active')) {
+                certificateModal.classList.remove('active');
+                certificatesTrack.classList.remove('manual-scroll');
+                certificatesTrack.classList.remove('paused');
+            }
+        });
+        
+        // Initialize certificates
+        window.addEventListener('load', () => {
+            duplicateCertificates();
+            certificatesTrack.style.cursor = 'grab';
+        });
 
         // Contact Form Functionality with EmailJS
         const contactForm = document.getElementById('contact-form');

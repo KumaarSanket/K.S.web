@@ -475,7 +475,6 @@
             width: 100%;
             /* Added padding-bottom for scrollbar space, using custom scrollbar style */
             padding-bottom: 1.5rem; 
-            scroll-snap-type: x mandatory; /* Added for snap-to-card effect */
         }
         
         .certificates-track {
@@ -491,7 +490,6 @@
         .certificate-card {
             cursor: pointer;
             user-select: none;
-            scroll-snap-align: start; /* Snap to beginning of card on manual scroll */
         }
         
         /* Certificate Modal */
@@ -1618,6 +1616,54 @@
                     openCertificateModal(img);
                 });
             });
+
+            // --- Auto-Scroll Feature ---
+            const certTrack = document.querySelector('.certificates-track');
+            const certContainer = document.querySelector('.certificates-container');
+            const originalCards = Array.from(certificateCards); // existing collection
+            
+            // Clone all cards for seamless infinite scroll
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                certTrack.appendChild(clone);
+                
+                // Add click listener to clone (since events aren't cloned)
+                const img = clone.querySelector('.certificate-image');
+                clone.addEventListener('click', (e) => {
+                     if (e.target.closest('a')) return;
+                     openCertificateModal(img);
+                });
+                
+                // Observe for lazy loading if needed
+                if (img.hasAttribute('data-src')) {
+                    imageObserver.observe(img);
+                }
+            });
+
+            // Auto Scroll Logic
+            let scrollSpeed = 1; 
+            let isPaused = false;
+            
+            function autoScroll() {
+                if (!isPaused) {
+                    certContainer.scrollLeft += scrollSpeed;
+                    
+                    // Reset if we've scrolled past half (the original set)
+                    if (certContainer.scrollLeft >= (certContainer.scrollWidth / 2)) {
+                        certContainer.scrollLeft = 0;
+                    }
+                }
+                requestAnimationFrame(autoScroll);
+            }
+            
+            // Start
+            autoScroll();
+            
+            // Event Listeners for Pausing
+            certContainer.addEventListener('mouseenter', () => isPaused = true);
+            certContainer.addEventListener('mouseleave', () => isPaused = false);
+            certContainer.addEventListener('touchstart', () => isPaused = true);
+            certContainer.addEventListener('touchend', () => setTimeout(() => isPaused = false, 2000));
 
             // --- Contact Form Submission (unchanged) ---
             const contactForm = document.getElementById('contact-form');

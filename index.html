@@ -464,7 +464,7 @@
 
         .skill-meter-fill {
             height: 100%;
-            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            background: linear-gradient(90deg, #ec671a, #ffffff, #074d07);
             border-radius: 3px;
         }
         
@@ -1563,13 +1563,13 @@
 
             // Populate skills track (technical skills)
             const technicalSkillsTrack = document.getElementById('technical-skills');
-            const technicalSkillsHTML = [...technicalSkillsData, ...technicalSkillsData] 
+            const technicalSkillsHTML = [...technicalSkillsData] 
                 .map(createSkillBox).join('');
             technicalSkillsTrack.innerHTML = technicalSkillsHTML;
 
             // Populate skills track (soft skills)
             const softSkillsTrack = document.getElementById('soft-skills');
-            const softSkillsHTML = [...softSkillsData, ...softSkillsData]
+            const softSkillsHTML = [...softSkillsData]
                 .map(createSkillBox).join('');
             softSkillsTrack.innerHTML = softSkillsHTML;
 

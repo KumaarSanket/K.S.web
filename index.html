@@ -1044,7 +1044,7 @@
         }
         
         /* Ensure other sections are above the fixed home */
-        #about, #projects, #skills, #certificates, #contact, footer {
+        #about, #projects, #skills, #certificates, #research-papers, #contact, footer {
             position: relative;
             z-index: 10;
         }
@@ -1178,6 +1178,7 @@
                     <a href="#projects" class="nav-link flex items-center"><i class="fas fa-folder w-5 h-5 mr-2"></i>PROJECTS</a>
                     <a href="#skills" class="nav-link flex items-center"><i class="fas fa-award w-5 h-5 mr-2"></i>SKILLS</a>
                     <a href="#certificates" class="nav-link flex items-center"><i class="fas fa-certificate w-5 h-5 mr-2"></i>CERTIFICATES</a>
+                    <a href="#research-papers" class="nav-link flex items-center"><i class="fas fa-file-alt w-5 h-5 mr-2"></i>RESEARCH</a>
                     <a href="#contact" class="nav-link flex items-center"><i class="fas fa-envelope w-5 h-5 mr-2"></i>CONNECT</a>
                     
                     <button id="theme-toggle" class="theme-toggle-nav" title="Toggle Theme" aria-label="Toggle dark/light theme">
@@ -1196,6 +1197,7 @@
                 <a href="#projects" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-folder mr-3"></i>PROJECTS</a>
                 <a href="#skills" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-award mr-3"></i>SKILLS</a>
                 <a href="#certificates" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-certificate mr-3"></i>CERTIFICATES</a>
+                <a href="#research-papers" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-file-alt mr-3"></i>RESEARCH</a>
                 <a href="#contact" class="block py-3 px-4 nav-link hover:bg-slate-800 flex items-center"><i class="fas fa-envelope mr-3"></i>CONNECT</a>
                 <div class="px-4 py-3">
                     <button id="theme-toggle-mobile" class="theme-toggle-nav w-full justify-center" title="Toggle Theme">
@@ -1414,7 +1416,7 @@
             
             <div class="relative">
                 <!-- Left Arrow -->
-                <button id="projects-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 -ml-4 md:-ml-6 hover:shadow-[0_0_30px_rgba(0,212,255,0.6),0_0_60px_rgba(168,85,247,0.4)]" style="box-shadow: 0 0 20px rgba(0,212,255,0.4), 0 0 40px rgba(168,85,247,0.2);" aria-label="Previous project"></button>
+                <button id="projects-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 -ml-4 md:-ml-6 hover:shadow-[0_0_30px_rgba(0,212,255,0.6),0_0_60px_rgba(168,85,247,0.4)]" style="box-shadow: 0 0 20px rgba(0,212,255,0.4), 0 0 40px rgba(168,85,247,0.2);" aria-label="Previous project">
                     <i class="fas fa-chevron-left text-xl"></i>
                 </button>
                 
@@ -1423,14 +1425,14 @@
                     <i class="fas fa-chevron-right text-xl"></i>
                 </button>
                 
-                <div id="projects-container" class="flex space-x-8 overflow-x-auto pb-6 custom-scrollbar snap-x snap-mandatory stagger-animate delay-100 scroll-smooth">
+                <div id="projects-container" class="flex space-x-8 overflow-x-auto pb-6 custom-scrollbar snap-x snap-mandatory stagger-animate delay-100 scroll-smooth" style="cursor: grab;">
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Uber Supply Demand Gap Analysis.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Uber Supply Demand Gap Analysis" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Uber Supply Demand Gap Analysis</h3>
@@ -1455,11 +1457,11 @@
 
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Bank Customer Churn Analysis.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Bank Customer Churn Analysis" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Bank Customer Churn Analysis</h3>
@@ -1484,11 +1486,11 @@
                 </div>
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Retail Flow Analytics.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Retail Flow Analytics" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Retail Flow Analytics</h3>
@@ -1513,11 +1515,11 @@
                 </div>
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/UIDAI Aadhaar Engagement Gap Analysis.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="UIDAI Aadhaar Engagement Gap Analysis" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">UIDAI Aadhaar Engagement Gap Analysis</h3>
@@ -1541,11 +1543,11 @@
                 </div>
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/ADIDAS U.S.A. SALES DASHBOARD.jpeg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="ADIDAS U.S.A. SALES DASHBOARD" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">ADIDAS U.S.A. SALES DASHBOARD</h3>
@@ -1568,11 +1570,11 @@
                 </div>
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Dubai Real Estate Intelligence Dashboard.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Dubai Real Estate Intelligence Dashboard" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Real Estate Intelligence</h3>
@@ -1595,11 +1597,11 @@
                 </div>
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Flipkart BBD Sales Dashboard.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Flipkart BBD Sales Dashboard" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Flipkart BBD Sales Dashboard</h3>
@@ -1621,11 +1623,11 @@
                 </div>
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Global Data Professionals Insights Dashboard.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Global Data Professionals Insights Dashboard" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Global Data Professionals Insights</h3>
@@ -1648,11 +1650,11 @@
                 </div>
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Customer Demographics Purchasing Analysis Dashboard.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Customer Demographics Purchasing Analysis Dashboard" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Customer Demographics Purchasing Analysis</h3>
@@ -1674,11 +1676,11 @@
                 </div>
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Global Layoffs Analysis.jpg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Global Layoffs Analysis Dashboard" 
-                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105 lazy-img">
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Global Layoffs Analysis</h3>
@@ -2141,6 +2143,52 @@
             </div>
         </div>
     </section>
+    
+    <!-- Research Papers Section -->
+    <section id="research-papers" class="py-20 bg-darker section-animate">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in stagger-animate">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Research <span class="gradient-text">Papers</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Research Paper Card -->
+                <div class="project-card p-8 rounded-2xl fade-in stagger-animate">
+                    <div class="flex flex-col items-center text-center">
+                        <!-- Certificate Icon/Preview -->
+                        <div class="mb-6">
+                            <div class="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center border-4 border-primary/30 shadow-2xl hover:scale-105 transition-transform duration-300">
+                                <i class="fas fa-file-pdf text-8xl text-primary"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Certificate Title -->
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4 gradient-text-glow">Research Paper Certificate</h3>
+                        
+                        <!-- View Certificate Button -->
+                        <a href="assets/PICET_Certificate_316.pdf" target="_blank" rel="noopener noreferrer" class="mb-6 inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-certificate text-xl"></i>
+                            View Certificate
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        
+                        <!-- Coming Soon Message -->
+                        <div class="mt-4">
+                            <div class="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full border border-primary/30 mb-4">
+                                <i class="fas fa-clock text-primary text-xl"></i>
+                                <span class="text-xl font-semibold gradient-text-glow">Will be available soon</span>
+                            </div>
+                            <p class="text-slate-300 text-lg mt-4 max-w-2xl mx-auto">
+                                My research paper is currently under review. Stay tuned for the publication!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Contact Form Column -->
     <section id="contact" class="py-20 bg-darker section-animate">
         <div class="container mx-auto px-6">
@@ -2567,26 +2615,129 @@
                 });
             });
 
-            // --- Projects Navigation Arrows ---
+            // --- Projects Navigation Arrows & Auto-Scroll ---
             const projectsContainer = document.getElementById('projects-container');
             const projectsPrev = document.getElementById('projects-prev');
             const projectsNext = document.getElementById('projects-next');
             
-            if (projectsContainer && projectsPrev && projectsNext) {
-                const scrollAmount = 400; // pixels to scroll per click
+            if (projectsContainer) {
+                // Arrow button navigation
+                if (projectsPrev && projectsNext) {
+                    const scrollAmount = 400; // pixels to scroll per click
+                    
+                    projectsPrev.addEventListener('click', () => {
+                        projectsContainer.scrollBy({
+                            left: -scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    });
+                    
+                    projectsNext.addEventListener('click', () => {
+                        projectsContainer.scrollBy({
+                            left: scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    });
+                }
+
+                // --- Projects Auto-Scroll with Manual Control ---
+                const projectCards = Array.from(document.querySelectorAll('#projects-container .project-card'));
                 
-                projectsPrev.addEventListener('click', () => {
-                    projectsContainer.scrollBy({
-                        left: -scrollAmount,
-                        behavior: 'smooth'
+                // Clone all project cards for seamless infinite scroll
+                projectCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    projectsContainer.appendChild(clone);
+                    
+                    // Add click listener to cloned image for modal
+                    const imgWrapper = clone.querySelector('.h-48.overflow-hidden');
+                    if (imgWrapper) {
+                        imgWrapper.addEventListener('click', function() {
+                            openCertificateModal(this.querySelector('img'));
+                        });
+                    }
+                    
+                    // Observe for lazy loading
+                    const img = clone.querySelector('img.lazy-img');
+                    if (img && img.hasAttribute('data-src')) {
+                        imageObserver.observe(img);
+                    }
+                });
+                
+                // Auto-scroll using actual scroll (so scrollbar moves)
+                let projectScrollSpeed = 1; // pixels per frame (slower than certificates)
+                let projectScrollAnimationId;
+                let projectIsPaused = false;
+                
+                function autoScrollProjects() {
+                    if (!projectIsPaused) {
+                        projectsContainer.scrollLeft += projectScrollSpeed;
+                        
+                        // Reset scroll when reaching halfway (seamless loop)
+                        const maxScroll = projectsContainer.scrollWidth / 2;
+                        if (projectsContainer.scrollLeft >= maxScroll) {
+                            projectsContainer.scrollLeft = 0;
+                        }
+                    }
+                    projectScrollAnimationId = requestAnimationFrame(autoScrollProjects);
+                }
+                
+                // Start auto-scroll
+                autoScrollProjects();
+                
+                // Pause animation when hovering over any project card
+                document.querySelectorAll('#projects-container .project-card').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        projectIsPaused = true;
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        projectIsPaused = false;
                     });
                 });
                 
-                projectsNext.addEventListener('click', () => {
-                    projectsContainer.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
+                // Enable manual drag scrolling on projects container
+                let projectIsDown = false;
+                let projectStartX;
+                let projectScrollLeft;
+                
+                projectsContainer.addEventListener('mousedown', (e) => {
+                    projectIsDown = true;
+                    projectIsPaused = true;
+                    projectsContainer.style.cursor = 'grabbing';
+                    projectStartX = e.pageX - projectsContainer.offsetLeft;
+                    projectScrollLeft = projectsContainer.scrollLeft;
+                });
+                
+                projectsContainer.addEventListener('mouseleave', () => {
+                    projectIsDown = false;
+                    projectsContainer.style.cursor = 'grab';
+                });
+                
+                projectsContainer.addEventListener('mouseup', () => {
+                    projectIsDown = false;
+                    projectsContainer.style.cursor = 'grab';
+                    setTimeout(() => {
+                        projectIsPaused = false;
+                    }, 500);
+                });
+                
+                projectsContainer.addEventListener('mousemove', (e) => {
+                    if (!projectIsDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - projectsContainer.offsetLeft;
+                    const walk = (x - projectStartX) * 2;
+                    projectsContainer.scrollLeft = projectScrollLeft - walk;
+                });
+                
+                // Pause on touch for mobile
+                projectsContainer.addEventListener('touchstart', () => {
+                    projectIsPaused = true;
+                });
+                
+                projectsContainer.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        projectIsPaused = false;
+                    }, 500);
                 });
             }
 

@@ -1623,17 +1623,16 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Retail Transactions Dashboard</h3>
                         <p class="text-slate-400 mb-4 text-sm">
-                             • Processed and cleaned 1,094 chocolate sales records spanning 8 months (Jan–Aug 2022) across 25 salespersons, 6 countries, and 22 product categories — eliminating $ symbols and commas from the Amount column, correcting 2 data type errors, and renaming columns for DAX compatibility before loading into Power BI.
+                             • Processed 541,909 raw retail transaction records through a 5-step Power Query ETL pipeline — removing 9,288 cancelled orders (C-prefix invoices), 135,080 null-customer rows, 10,624 negative quantity rows, 2,517 zero-price rows, and 1,454 null description rows — retaining 397,884 clean records (73.4% retention rate) across 38 countries.
                         </p>
                         <p class="text-slate-400 mb-4 text-sm">
-                             • Engineered 5 DAX measures (Total Revenue, Total Boxes, Avg Revenue per Sale, Total Transactions, Salesperson Rank) and built a 12-visual interactive dashboard featuring KPI cards, leaderboard bar charts, product comparison, monthly trend line, country donut chart, salesperson table, and 2 dynamic slicers.
+                             • Created a Revenue column (Quantity × UnitPrice) in Power Query, corrected 2 data type errors (StockCode to Text, InvoiceDate to Date), engineered 5 DAX measures (Total Revenue, Total Quantity, Unique Customers, Unique Products, Avg Order Value), and built a 12-visual interactive dashboard with 2 cross-filtering slicers.
                         </p>
                         <p class="text-slate-400 mb-4 text-sm">
-                             • Analyzed $6,183,625 total revenue across 177,007 boxes shipped and 1,094 transactions — surfacing Ches Bonnell as #1 salesperson at $320,901 (5.19% share) and flagging Wilone O'Kielt at rank 25 with $138,523 — a $182,378 performance gap representing a 2.32× revenue difference between top and bottom performer.
+                             • Analyzed £8,911,407.90 total revenue across 5,167,812 units, 4,338 unique customers, 18,532 invoices, and 3,665 products — identifying United Kingdom as the dominant market at £7,308,391 (82.01% of total revenue) across 3,920 customers and 16,646 orders.
                         </p>
                         <p class="text-slate-400 mb-4 text-sm">
-                             • Identified Australia as top revenue country at $1,137,367 (18.39%), revealed remarkably balanced country distribution (only 3.02pp spread across all 6 countries), flagged Smooth Sliky Salty as top product at $349,692, and uncovered January as peak revenue month at $896,105 — 32.9% above the April trough of $674,051.
-                        </p>
+                             • Identified November 2011 as peak revenue month at £1,161,817 (Christmas shopping surge — 159.7% above February 2011 trough of £447,137), Paper Craft Little Birdie as top product at £168,469 (1.89% share), and Avg Order Value of £480.87 across all 18,532 invoices.
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>

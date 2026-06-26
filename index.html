@@ -1454,6 +1454,79 @@
                     </div>
                 </div>
 
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/ADIDAS U.S.A. SALES DASHBOARD.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="ADIDAS U.S.A. SALES DASHBOARD" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">ADIDAS U.S.A. SALES DASHBOARD</h3>
+                        <p class="text-slate-400 mb-4 text-sm">
+                             • Processed and cleaned 9,648 sales records spanning 24 months (Jan 2020–Dec 2021) across 6 retailers, 5 US regions, 50 states, 52 cities, 6 product categories, and 3 sales channels — achieving 100% data integrity with zero null values across all 13 columns after Power Query ETL pipeline execution.
+                        </p>
+                        <p class="text-slate-400 mb-4 text-sm">
+                             • Engineered 4 DAX measures (Total Revenue, Total Profit, Total Units, Avg Margin) and built a 12-visual interactive Power BI dashboard featuring KPI cards, clustered bar charts, donut chart, line chart, filled map, and 3 dynamic slicers enabling real-time cross-filtering across all dimensions.
+                        </p>
+                        <p class="text-slate-400 mb-4 text-sm">
+                             • Analyzed $899,902,125 total revenue and $332,134,761 operating profit (42.30% avg margin), surfacing West Gear as top retailer ($242.96M), Men's Street Footwear as highest-revenue product ($208.83M), and West Region as dominant geography ($269.94M — 30.0% of total US revenue).
+                        </p>
+                        <p class="text-slate-400 mb-4 text-sm">
+                             • Identified 294.23% revenue surge from 2020 ($182.08M) to 2021 ($717.82M), flagged Online channel as highest-margin sales method (38.98%), and pinpointed South Region as highest-margin geography (42.26%) — all surfaced through interactive dashboard filtering.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/ADIDAS-U.S.A.-SALES-DASHBOARD Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/ADIDAS-U.S.A.-SALES-DASHBOARD" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Banking Transactions Dashboard.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Banking Transactions Dashboard" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Banking Transactions Dashboard</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft. 
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Excel</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Banking Transactions Dashboard Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Banking-Transactions-Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
@@ -1541,77 +1614,7 @@
                     </div>
                 </div>
 
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
-                        <img data-src="assets/images/ADIDAS U.S.A. SALES DASHBOARD.jpeg" 
-                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
-                             alt="ADIDAS U.S.A. SALES DASHBOARD" 
-                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 text-primary">ADIDAS U.S.A. SALES DASHBOARD</h3>
-                        <p class="text-slate-400 mb-4 text-sm">
-                             • Processed and cleaned 9,648 sales records spanning 24 months (Jan 2020–Dec 2021) across 6 retailers, 5 US regions, 50 states, 52 cities, 6 product categories, and 3 sales channels — achieving 100% data integrity with zero null values across all 13 columns after Power Query ETL pipeline execution.
-                        </p>
-                        <p class="text-slate-400 mb-4 text-sm">
-                             • Engineered 4 DAX measures (Total Revenue, Total Profit, Total Units, Avg Margin) and built a 12-visual interactive Power BI dashboard featuring KPI cards, clustered bar charts, donut chart, line chart, filled map, and 3 dynamic slicers enabling real-time cross-filtering across all dimensions.
-                        </p>
-                        <p class="text-slate-400 mb-4 text-sm">
-                             • Analyzed $899,902,125 total revenue and $332,134,761 operating profit (42.30% avg margin), surfacing West Gear as top retailer ($242.96M), Men's Street Footwear as highest-revenue product ($208.83M), and West Region as dominant geography ($269.94M — 30.0% of total US revenue).
-                        </p>
-                        <p class="text-slate-400 mb-4 text-sm">
-                             • Identified 294.23% revenue surge from 2020 ($182.08M) to 2021 ($717.82M), flagged Online channel as highest-margin sales method (38.98%), and pinpointed South Region as highest-margin geography (42.26%) — all surfaced through interactive dashboard filtering.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="assets/ADIDAS-U.S.A.-SALES-DASHBOARD Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i> Report
-                            </a>
-                            <a href="https://github.com/KumaarSanket/ADIDAS-U.S.A.-SALES-DASHBOARD" class="text-primary hover:text-secondary transition font-medium">
-                                <i class="fab fa-github mr-1"></i> View
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
-                        <img data-src="assets/images/Banking Transactions Dashboard.jpeg" 
-                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
-                             alt="Banking Transactions Dashboard" 
-                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 text-primary">Banking Transactions Dashboard</h3>
-                        <p class="text-slate-400 mb-4 text-sm">
-                             • Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
-                        </p>
-                        <li class="text-slate-400 mb-4 text-sm">
-                             • Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
-                        </li>
-                        <p class="text-slate-400 mb-4 text-sm">
-                             • Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
-                        </p>
-                        <p class="text-slate-400 mb-4 text-sm">
-                             • Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft. 
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="assets/Banking Transactions Dashboard Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i> Report
-                            </a>
-                            <a href="https://github.com/KumaarSanket/Banking-Transactions-Analysis" class="text-primary hover:text-secondary transition font-medium">
-                                <i class="fab fa-github mr-1"></i> View
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+                    
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Marketing A/B Testing Dashboard.jpeg" 

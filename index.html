@@ -1608,44 +1608,6 @@
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
-                        <img data-src="assets/images/HR Employee Attrition & Workforce Risk Intelligence Dashboard.jpeg" 
-                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
-                             alt="HR Employee Attrition & Workforce Risk Intelligence Dashboard" 
-                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 text-primary">HR Employee Attrition & Workforce Risk Intelligence</h3>
-                        <li class="text-slate-400 mb-4 text-sm">
-                             Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
-                        </li>
-                        <li class="text-slate-400 mb-4 text-sm">
-                             Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
-                        </li>
-                        <li class="text-slate-400 mb-4 text-sm">
-                             Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
-                        </li>
-                        <li class="text-slate-400 mb-4 text-sm">
-                             Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft.
-                        </li>   
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Excel</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="assets/HR Employee Attrition & Workforce Risk Intelligence Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i> Report
-                            </a>
-                            <a href="https://github.com/KumaarSanket/HR-Employee-Attrition-Workforce-Risk-Intelligence" class="text-primary hover:text-secondary transition font-medium">
-                                <i class="fab fa-github mr-1"></i> View
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/Healthcare Insurance Claims Cost & Risk Analytics Dashboard.jpeg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Healthcare Insurance Claims Cost & Risk Analytics Dashboard" 
@@ -1797,6 +1759,83 @@
                 </div>
 
                     -->
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/EV Title & Registration Dashboard.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="EV Title & Registration Dashboard" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">EV Title & Registration</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Conducted thorough Python-based EDA on a 930MB, 1,772,617-row Washington State EV registration CSV before any tool selection — confirming 62 exact duplicates, latin-1 encoding, Sale Price stored as '$74,100' text, dates as 'July 28, 2025' text strings, 3 boolean columns as TRUE/FALSE, and Postal Code as float (98052.0) — determining Excel was NOT required and that all 10 data issues could be resolved inline during MySQL import.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Loaded all 1,772,617 records into MySQL via LOAD DATA INFILE in a single command using @variable placeholders for inline transformation — stripping currency symbols, converting dates with STR_TO_DATE(), converting booleans to TINYINT, formatting postal codes via LPAD(), and handling latin-1 encoding with CHARACTER SET latin1 — achieving zero import errors after resolving MySQL strict mode and connection timeout issues.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Created 10 performance indexes and executed 7 analytical SQL queries plus 1 analytical VIEW (vw_ev_summary) — surfacing TESLA's 40.90% market share (154,341 unique vehicles), King County's 55.50% geographic dominance (209,431 vehicles), 2023 as peak adoption year (75,105 new registrations), and Tesla Model Y as #1 model (75,131 unique vehicles, 291mi avg range, $52,058 avg price).
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 3-page Power BI dashboard (23 visuals) connected live to MySQL with 8 DAX measures and Sync Slicers — Page 1 (Fleet Overview), Page 2 (Adoption Trends), Page 3 (Geographic Distribution & Compliance) — revealing BEV dominance at 79.61%, Registration Renewal as most common transaction (48.20%), and only 4.99% CAFV eligibility across the 377,329-vehicle fleet.
+                        </li>   
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">DAX</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/EV Title & Registration Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/EV-Title-Registration" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                    
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/HR Attrition Intelligence Dashboard.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="HR Employee Attrition & Workforce Risk Intelligence Dashboard" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">HR Employee Attrition & Workforce Risk Intelligence</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Executed a 3-phase end-to-end analytics pipeline on IBM's 1,470-employee HR dataset — Phase 1 (Python): inspected 35 columns, dropped 3 zero-value constants, engineered 4 derived features (AgeGroup, IncomeBucket, TenureBucket, AttritionBin), and generated 10 EDA visualizations covering every major attrition risk dimension before exporting a clean 32-column CSV for MySQL.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Phase 2 (MySQL): created a 32-column normalized table, imported data with inline Yes/No→1/0 conversion for Attrition and OverTime, built 8 performance indexes, executed 8 validated analytical queries establishing company-wide KPIs, and created vw_hr_summary — an analytical VIEW pre-aggregating 15 demographic and behavioral dimensions for Power BI multi-factor analysis.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Phase 3 (Power BI): connected to MySQL, renamed tables in Power Query, engineered 12 DAX measures, and built a 3-page 26-visual interactive dashboard surfacing that Sales Representatives carry 39.76% attrition (2.47× company average), overtime workers leave at 2.93× the rate of non-overtime workers, the Single + Overtime + Job Level 1 combination reaches 67.80%, and employees who left earned $2,046/month less than those who stayed — actionable retention intelligence across 6 business dimensions.
+                        </li>
+  
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">DAX</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/HR Employee Attrition & Workforce Risk Intelligence Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/HR-Employee-Attrition-Workforce-Risk-Intelligence" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">

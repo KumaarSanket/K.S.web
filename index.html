@@ -1464,16 +1464,16 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">ADIDAS U.S.A. SALES DASHBOARD</h3>
                         <li class="text-slate-400 mb-4 text-sm">
-                             • Processed and cleaned 9,648 sales records spanning 24 months (Jan 2020–Dec 2021) across 6 retailers, 5 US regions, 50 states, 52 cities, 6 product categories, and 3 sales channels — achieving 100% data integrity with zero null values across all 13 columns after Power Query ETL pipeline execution.
+                             Processed and cleaned 9,648 sales records spanning 24 months (Jan 2020–Dec 2021) across 6 retailers, 5 US regions, 50 states, 52 cities, 6 product categories, and 3 sales channels — achieving 100% data integrity with zero null values across all 13 columns after Power Query ETL pipeline execution.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             • Engineered 4 DAX measures (Total Revenue, Total Profit, Total Units, Avg Margin) and built a 12-visual interactive Power BI dashboard featuring KPI cards, clustered bar charts, donut chart, line chart, filled map, and 3 dynamic slicers enabling real-time cross-filtering across all dimensions.
+                             Engineered 4 DAX measures (Total Revenue, Total Profit, Total Units, Avg Margin) and built a 12-visual interactive Power BI dashboard featuring KPI cards, clustered bar charts, donut chart, line chart, filled map, and 3 dynamic slicers enabling real-time cross-filtering across all dimensions.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             • Analyzed $899,902,125 total revenue and $332,134,761 operating profit (42.30% avg margin), surfacing West Gear as top retailer ($242.96M), Men's Street Footwear as highest-revenue product ($208.83M), and West Region as dominant geography ($269.94M — 30.0% of total US revenue).
+                             Analyzed $899,902,125 total revenue and $332,134,761 operating profit (42.30% avg margin), surfacing West Gear as top retailer ($242.96M), Men's Street Footwear as highest-revenue product ($208.83M), and West Region as dominant geography ($269.94M — 30.0% of total US revenue).
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             • Identified 294.23% revenue surge from 2020 ($182.08M) to 2021 ($717.82M), flagged Online channel as highest-margin sales method (38.98%), and pinpointed South Region as highest-margin geography (42.26%) — all surfaced through interactive dashboard filtering.
+                             Identified 294.23% revenue surge from 2020 ($182.08M) to 2021 ($717.82M), flagged Online channel as highest-margin sales method (38.98%), and pinpointed South Region as highest-margin geography (42.26%) — all surfaced through interactive dashboard filtering.
                         </li>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
@@ -1501,22 +1501,21 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Airline Passenger Experience & Service Quality Intelligence</h3>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
+                             Received 2 separate CSV files (train.csv — 103,904 rows, test.csv — 25,976 rows) from a Kaggle ML dataset split — identified both files contain identical 25 columns including the target 'satisfaction' label with zero ID overlap — combined into one unified 129,880-row dataset via Python for business intelligence analysis.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
+                             Executed a Python cleaning script performing 8 operations: combined train+test, dropped Unnamed:0 index column, standardized all 24 column names to lowercase underscore format, filled 393 arrival delay nulls with 0, fixed 'disloyal' → 'Disloyal' capitalisation, and created 6 derived columns (age_group, distance_group, total_delay_minutes, is_delayed, is_satisfied, avg_service_rating) — producing airline_satisfaction_clean.csv with 129,880 rows, 30 columns, zero nulls, zero duplicates.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
+                             Imported all 129,880 rows into MySQL in 3.157 seconds (zero warnings, zero errors) via LOAD DATA INFILE, created 6 performance indexes in under 1 second each, and executed 7 analytical SQL queries + created vw_airline_summary VIEW — confirming 43.45% overall satisfaction rate, Business Class at 69.44% vs Eco at 18.77%, and Online Boarding as the #1 satisfaction driver (4.03 satisfied vs 2.66 dissatisfied).
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft.
+                             Built a 2-page Power BI dashboard with 8 core DAX measures + 6 service rating measures connected live to MySQL — Page 1 (Satisfaction Overview) showing KPIs, class comparison, customer segment analysis, age trend, and satisfaction split; Page 2 (Service Quality & Delay Impact) showing service driver analysis, delay impact, distance correlation, and average delay by class. Fixed Boolean import issue (is_satisfied/is_delayed auto-detected as True/False) by changing column types to Whole Number in Power Query.
                         </li>   
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Excel</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
                         </div>
                         <div class="flex space-x-4">
                             <a href="assets/Airline Passenger Experience & Service Quality Intelligence Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">

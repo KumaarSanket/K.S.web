@@ -1612,16 +1612,16 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Global GDP & Economic Growth Intelligence</h3>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
+                             Received 2 World Bank CSV files — gdp_data.csv (13,365 rows: 262 country codes × up to 63 years) and country_codes.csv (217 rows: country code → Region + Income Group mapping) — identified that 48 of the 262 codes were World Bank aggregate groups (WLD, HIC, EUU etc.), not real countries. Used Python INNER JOIN to merge both files, automatically removing all 48 aggregates, producing 10,548 rows across 214 real countries and territories. 
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
+                             Python engineered 5 derived columns (gdp_billion_usd, gdp_scale bucket, decade, yoy_growth_pct via pct_change(), is_recession_year flag) — producing gdp_clean.csv with 11 columns, zero nulls except 214 expected NULLs in yoy_growth_pct for 1960 baseline year (first year per country has no prior year to compare). 
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
+                             Excel built a Decade × Region GDP cross-tab PivotTable with color-scale conditional formatting, a 2022 country ranking PivotTable with data bars and growth color scales, and a CAGR analysis sheet with CAGR formula =(End/Start)^(1/Years)-1 applied to top economies. MySQL imported 10,548 rows, created 6 indexes, and executed 7 analytical queries + VIEW confirming $99.15T world GDP (2022), East Asia & Pacific as richest region ($29.89T), and High income group controlling 61.25% of world GDP from only 63 countries. 
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft.
+                             Built a 3-page Power BI dashboard (21 visuals, 8 DAX measures) covering Global GDP Overview (KPI cards, 63-year world GDP trend, regional bar, income group donut), Country Rankings (Top 10 / Bottom 10 using Top N filters, GDP scale distribution, 2022 growth leaders table), and Regional & Historical Trends (multi-line regional trend chart, decade column chart, recession years by region, income group divergence line).
                         </li>   
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Excel</span>

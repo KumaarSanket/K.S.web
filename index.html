@@ -1602,11 +1602,9 @@
                     </div>
                 </div>
 
-                    <!--
-
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
-                        <img data-src="assets/images/Global GDP & Economic Growth Intelligence Dashboard.jpeg" 
+                        <img data-src="assets/images/World GDP Dashboard.jpeg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Global GDP & Economic Growth Intelligence Dashboard" 
                              class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
@@ -1641,8 +1639,8 @@
                         </div>
                     </div>
                 </div>
-                    
 
+                    <!--
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/E-Commerce Logistics & Delivery Performance Intelligence Dashboard.jpeg" 
@@ -1681,9 +1679,11 @@
                     </div>
                 </div>
 
+                    -->
+
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
-                        <img data-src="assets/images/India Crop Production & Yield Intelligence Dashboard.jpeg" 
+                        <img data-src="assets/images/India Agricultural Intelligence Dashboard.jpeg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="India Crop Production & Yield Intelligence Dashboard" 
                              class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
@@ -1691,22 +1691,21 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">India Crop Production & Yield Intelligence</h3>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
+                             Processed two complementary Indian agricultural datasets — a 19,689-row state-level file with unique input-factor columns (rainfall, fertilizer, pesticide, yield) and a 246,091-row district-level file with 4× the crop coverage — building a genuine 2-table MySQL model, the first JOIN-capable architecture in this portfolio.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
+                              Discovered and corrected a severe unit-of-measurement distortion: Coconut is counted in individual nuts rather than weight, accounting for 95.41% of raw "total production" across just 0.87% of records — every production ranking in this dashboard explicitly excludes it.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
+                              Engineered boundary-safe derived features and 15+ DAX measures across a 3-page, 21-visual Power BI dashboard, revealing that fertilizer use rose 53.2% between 1997 and 2019 while average yield rose only 9.9% — a genuine diminishing-returns finding — and that Uttar Pradesh leads national production at 4.44 billion units (excl. coconut).
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft.
+                             Demonstrated that cross-crop correlation analysis is structurally misleading in this dataset (Rainfall/Fertilizer/Pesticide repeat identically across all crops within a state-year) and that isolating a single crop reveals genuine signal — Wheat shows a +0.447 fertilizer correlation and a -0.410 rainfall correlation, both consistent with known agronomic behavior.
                         </li>   
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Excel</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
                         </div>
                         <div class="flex space-x-4">
                             <a href="assets/India Crop Production & Yield Intelligence Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
@@ -1721,7 +1720,7 @@
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
-                        <img data-src="assets/images/Telecom Subscriber Revenue & Churn Analytics Dashboard.jpeg" 
+                        <img data-src="assets/images/Telecom Customer Intelligence Dashboard.jpeg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="Telecom Subscriber Revenue & Churn Analytics Dashboard" 
                              class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
@@ -1729,22 +1728,22 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">Telecom Subscriber Revenue & Churn Analytics</h3>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
+                             Processed and cleaned 7,043 telecom subscriber records across geography, demographics, 9 service subscriptions, contract terms, and churn outcomes — achieving 100% data integrity by fixing an 11-row Total Charges text-formatting issue and dropping 4 constant/redundant columns from a 33-column raw source. 
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
+                             Engineered 15 DAX measures (12 core KPI measures + 3 weighted-average correction measures) and built a 28-visual interactive Power BI dashboard featuring KPI cards, a geographic customer map, clustered bar/column charts, and 8 dynamic slicers enabling real-time cross-filtering across all dimensions.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
+                             Analyzed a 26.54% overall churn rate (1,869 of 7,043 customers), surfacing contract type as the dominant lever — Month-to-month customers churn at 42.71% versus 2.83% for Two-year contracts, a 15× gap — and identified $139,130.85 in monthly recurring revenue at risk (30.5% of total), annualizing to $1,669,570.20.
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft.
+                             Uniquely leveraged IBM's extended dataset fields to validate a pre-built Churn Score (0.665 correlation with actual churn) and categorize 20 raw exit-interview reasons into 6 business categories, revealing Competitor Loss as the leading driver at 33.2% of all churn — ahead of Product/Price Dissatisfaction (25.6%) and Support/Attitude Problems (19.6%).
                         </li>   
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Excel</span>
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
-                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power Query</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
                         </div>
                         <div class="flex space-x-4">
                             <a href="assets/Telecom Subscriber Revenue & Churn Analytics Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
@@ -1756,8 +1755,6 @@
                         </div>
                     </div>
                 </div>
-
-                    -->
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">

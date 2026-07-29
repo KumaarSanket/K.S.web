@@ -1651,16 +1651,16 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3 text-primary">E-Commerce Logistics & Delivery Performance Intelligence</h3>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Processed 116,201 raw banking transaction records through a 3-tool pipeline (Excel → MySQL → Power BI) — removing 39 exact duplicates in Excel, standardising date formats to YYYY-MM-DD, engineering 5 derived columns (CATEGORY, TXN_TYPE, AMOUNT, TXN_YEAR, TXN_MONTH), and importing 116,162 clean records into MySQL via LOAD DATA LOCAL INFILE after resolving 4 critical import errors. 
+                             Conducted deep EDA across 9 linked tables (99,441 orders, 112,650 items, 103,886 payments, 3,095 sellers, 1M+ geolocation rows) — confirmed zero orphan records across every foreign key, resolved a 73-vs-71 category translation gap, and aggregated 1,000,163 raw geolocation rows into 19,015 unique zip prefixes. 
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Designed a MySQL database (banking_project) with 1 transaction table (14 columns) and 1 analytical VIEW (vw_monthly_summary), executed 7 analytical queries covering KPIs, monthly trends, category breakdown, account performance, year-over-year comparison, and deposit vs withdrawal splits — creating a complete SQL-based analytical layer before connecting to Power BI. 
+                             Built a 9-table MySQL relational model preserving full referential integrity across orders, sellers, products, and payments — reconciling a ~1% revenue gap between Items ($15.84M) and Payments ($16.01M) tables and excluding 6 data-quality-flagged canceled orders from delivery-time calculations. 
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Built a 3-page interactive Power BI dashboard (18 visuals total) with 7 DAX measures, Sync Slicers across pages, and a custom Banking Premium Navy & Gold theme — covering Overview (Page 1), Category & Accounts (Page 2), and Trends & Flow (Page 3) — all connected live to MySQL. 
+                             Analyzed delivery performance across 96,478 delivered orders (97.02% of total, Sept 2016–Oct 2018), surfacing a 91.88% on-time rate (12.09-day avg) and a direct delivery-speed-to-satisfaction link — 5-star reviews averaged 10.22 days/96.99% on-time vs. 1-star at 20.85 days/62.20% on-time. 
                         </li>
                         <li class="text-slate-400 mb-4 text-sm">
-                             Analyzed ■238.37bn total deposits and ■240.20bn total withdrawals across 116,162 transactions (10 accounts, Jan 2015–Mar 2019) — surfacing ■-1.83bn net negative cash flow, 2016 as peak year (■99.72bn deposits, 30,367 transactions), Fund Transfer as dominant category (28.50% of transactions, 70.10% of total amount), and 97.5% of all balance records in negative territory indicating persistent account overdraft.
+                             Identified same-state shipping as nearly 2× faster than cross-state (7.46 vs. 14.62 days) despite only 36.0% of orders shipping same-state, flagged freight costs averaging 32.1% of product price (4,124 orders where freight exceeded item price), and isolated underperforming sellers among 627 high-volume sellers (as low as 65.1% on-time vs. 91.88% field average).
                         </li>   
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Excel</span>

@@ -1456,6 +1456,190 @@
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Airbnb Hotel Booking Analysis DASHBOARD.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Airbnb Hotel Booking Analysis DASHBOARD" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Airbnb Hotel Booking Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Cleaned and analyzed 102,599 raw NYC Airbnb listings across 26 columns down to a 96,698-row, 24-column analysis-ready dataset — removing 541 exact duplicates, 2 unusable columns, misspelled borough labels, and 4,001 rows of impossible outlier values (availability outside 0–365 days, negative minimum-night stays) through a fully scripted, repeatable Python pipeline.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 9 structured business questions covering listing distribution, pricing, construction year, host behavior, and review patterns — then reproduced every answer independently in MySQL using single-table SQL (including a hand-built Pearson correlation formula, since MySQL has no native CORR() aggregate) to cross-validate the Python results to 3+ decimal places.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 2-page, 15-visual interactive Power BI dashboard with 6 DAX measures, 2 KPI-card rows, 5 bar charts, 1 conditionally-formatted matrix heatmap, 2 trend-lined scatter plots, and 3 cross-filtering slicers — connected directly to the MySQL database rather than a static file export.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a genuinely counter-intuitive finding: average price is essentially flat across all five boroughs ($623.75–$631.34, a $7.59 spread), and price shows no meaningful relationship with construction year (r = - 0.005) or host verification status — evidence that price in this dataset is closer to randomly assigned than market-driven, which is reported as a data-quality caveat rather than a real pricing insight.
+                        </li>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">MySQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Airbnb Hotel Booking Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Airbnb Hotel Booking Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Car Market Trends Analysis with Car Dekho Data Analysis DASHBOARD.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Car Market Trends Analysis with Car Dekho Data Analysis DASHBOARD" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Car Market Trends Analysis with Car Dekho Data Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Cleaned and analyzed 301 raw used-vehicle listings, uncovering a critical scope issue at the source: 88 of 301 rows (29.2%) were actually motorbikes mislabeled as cars in a "car market" dataset — flagged, separated into a vehicle_type field, and excluded from the core 211-row car analysis rather than silently treated as cars.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 9 structured pricing questions covering depreciation, mileage, age, fuel type, transmission, seller type, and a direct bikes-vs-cars comparison — then reproduced every answer independently in MySQL across two related tables.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 3-page, 15-visual interactive Power BI dashboard with 4 DAX measures, a scatter-plot depreciation model, and a dedicated bikes-vs-cars comparison page — connected directly to MySQL.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a specific, actionable pricing insight: original list price (Present_Price) is a strong predictor of resale value (r = 0.835), but odometer reading is nearly irrelevant (r = -0.059) — while vehicle age (r = -0.312) and transmission type (Automatic sells for more than double Manual, ₹11.69L vs ₹5.33L) are the real drivers of resale price in this market.
+                        </li>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">MySQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Car Market Trends Analysis with Car Dekho Data Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Car Market Trends Analysis with Car Dekho Data Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Healthcare Analytics for Doctor Visits Analysis DASHBOARD.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Healthcare Analytics for Doctor Visits Analysis DASHBOARD" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Healthcare Analytics for Doctor Visits Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Analyzed 5,190 patient records from the classic Australian Health Survey (1977-78) doctor-visit dataset — genuinely clean at the source, with zero missing values and zero duplicates, requiring interpretive rather than corrective cleaning: un-scaling age and income fields that were stored as compressed ratios (age ÷ 100, income ÷ $10,000 AUD).
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 9 structured health-behavior questions covering visit frequency, gender, insurance status, chronic conditions, and 4 separate correlation analyses — then reproduced every answer independently in MySQL, including 4 hand-built Pearson correlation formulas.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 2-page, 11-visual interactive Power BI dashboard with 5 DAX measures, a zero-inflation distribution chart, and two scatter plots isolating the strongest predictors of visit frequency — connected directly to MySQL.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a genuinely counter-intuitive finding: having private health insurance shows essentially no relationship with visit frequency (0.295 vs. 0.307 average visits) — while self-reported illness count (r = 0.224) and a limiting chronic condition (0.603 vs. 0.262 average visits, a 2.3x gap) are the two strongest drivers found in the entire dataset.
+                        </li>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">MySQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Healthcare Analytics for Doctor Visits Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Healthcare Analytics for Doctor Visits Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Exploring Global Terrorism Patterns & Trends Analytics DASHBOARD.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Exploring Global Terrorism Patterns & Trends Analytics DASHBOARD" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Exploring Global Terrorism Patterns & Trends Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Analyzed 1,793 country-year records from the Global Terrorism Index, spanning 163 countries across 11 years (2012–2022) — a complete panel with zero missing values and zero duplicates, requiring structural rather than corrective cleaning: consolidating a 12-sheet workbook down to the single already-melted 'Combined raw' sheet that contained the full dataset.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 8 structured geopolitical questions covering cumulative impact, concentration, global trend direction, the single worst country-year on record, and two correlation analyses — then reproduced every answer independently in MySQL, including 2 hand-built Pearson correlation formulas.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 3-page, 14-visual interactive Power BI dashboard with 5 DAX measures, an ISO3-coded world map, a dual-axis global trend line, and a dedicated severity/period breakdown page built on a bucketed analytical view — connected directly to MySQL.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a sharply concentrated and genuinely improving picture: the top 10 countries account for 80.28% of all 95,993 global fatalities, but the global average GTI score fell from a 2018 peak of 2.630 to 2.168 by 2022 — even as Burkina Faso, Mozambique, and Chad saw the sharpest deteriorations, pointing to a real geographic shift in where terrorism impact is concentrated.
+                        </li>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">MySQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Exploring Global Terrorism Patterns & Trends Analytics.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Exploring Global Terrorism Patterns & Trends Analytics" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Retail Insights from Superstore Data Analysis DASHBOARD.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Retail Insights from Superstore Data Analysis DASHBOARD" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Retail Insights from Superstore Data Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Cleaned and analyzed 9,994 raw US retail transactions down to a 9,977-row, 12-column analysis-ready dataset — removing 17 exact duplicates and 1 constant column (Country), through a fully scripted, repeatable Python pipeline.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 9 structured business questions covering profitability, category/sub-category performance, discounting behavior, regional strength, customer segments, and fulfillment — then reproduced every answer independently in MySQL, including a hand-built Pearson correlation formula for the discount-profit relationship.	
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 2-page, 15-visual interactive Power BI dashboard with 5 DAX measures, a red/blue conditional-formatted profit-by-sub-category chart, a state-level filled map, and cross-filtering region/category slicers — connected directly to MySQL.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a critical profitability gap hiding inside a strong top-line: Furniture is the 2nd-highest category by sales ($741,306) yet dead last by profit ($18,422, a 2.5% margin) — and Tables specifically lose $17,725 outright. Meanwhile Technology leads on both sales and profit, and Discount is negatively correlated with Profit (r = -0.22), directly explaining where the margin is leaking.
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">MySQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Retail Insights from Superstore Data Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Retail Insights from Superstore Data Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
                         <img data-src="assets/images/ADIDAS U.S.A. SALES DASHBOARD.jpeg" 
                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
                              alt="ADIDAS U.S.A. SALES DASHBOARD" 

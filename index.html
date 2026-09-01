@@ -2015,6 +2015,116 @@
                     </div>
                 </div>
 
+                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Global Unicorn Company Analysis Dashboard.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Global Unicorn Company Analysis Dashboard" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Global Unicorn Company Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Analyzed 1,074 global unicorn companies (private startups valued at $1B+) across 46 countries — a dataset clean of duplicates but requiring real parsing work: Valuation and Funding stored as formattedtext ('$180B', '$572M'), a capitalization split fracturing one industry category into two, and a commaseparated investor list hiding a genuine many-to-many relationship inside a single text column.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 7 structured questions covering valuation leaders, industry concentration, country and continent distribution, the funding-valuation relationship, and time-to-unicorn patterns — then reproduced every answer independently in MySQL across a properly normalized two-table schema.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 3-page, 12-visual interactive Power BI dashboard with 4 DAX measures and a dedicated Investors page powered by a real junction table — not a workaround, but the correct relational structure for a many-to-many relationship.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a sharp geographic concentration story: the United States alone accounts for 562 of 1,074 unicorns (52.3%) and North America holds $2.03T of the ~$3.7T combined valuation — more than double Asia's $1.07T and vastly ahead of Africa's $5B, a 400x gap between the top and bottom continent.
+                        </li>   
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Global Unicorn Company Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Global Unicorn Company Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Indian Agriculture Exhaustive Crop Production Analysis Dashboard.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Indian Agriculture Exhaustive Crop Production Analysis Dashboard" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Indian Agriculture Exhaustive Crop Production Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Analyzed 73,827 crop-production records spanning 33 Indian states, 646 districts, and 122 crops from 2005–2023 — a genuinely clean dataset structurally (zero duplicates), but one requiring careful interpretive cleaning: a systematic whitespace defect, three pre-aggregated rollup rows hiding among individual crops, and a critical unit-of-measurement inconsistency across crops that most naive analyses would miss entirely.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 8 structured agricultural questions covering state-level area leadership, national production trends, crop rankings, seasonal patterns, staple-crop yield trends, and geographic concentration — then reproduced every answer independently in MySQL across a genuinely justified two-table schema.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 3-page, 13-visual interactive Power BI dashboard with 4 DAX measures, a national trend line, and a dedicated Crop Deep Dive page that surfaces the unit-of-measurement caveat directly in the dashboard rather than burying it in a footnote.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a finding that would mislead most default analyses: Coconut appears to be India's #1 crop by production (41.8 billion units) — but only because coconut is measured in individual nuts, not tonnes like nearly every other crop. Sugarcane (1.66 billion tonnes) is the true tonnage leader; treating the raw Production column as unit-consistent across crops is the single most important trap in this dataset.
+                        </li>   
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Indian Agriculture Exhaustive Crop Production Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Indian Agriculture Exhaustive Crop Production Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
+                    <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
+                        <img data-src="assets/images/Cardiology Hospital Healthcare Admissions Data Analysis Dashboard.jpeg" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%231e293b' width='600' height='300'/%3E%3C/svg%3E"
+                             alt="Cardiology Hospital Healthcare Admissions Data Analysis Dashboard" 
+                             class="w-full h-full object-contain transition duration-500 group-hover:scale-105 lazy-img">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">Cardiology Hospital Healthcare Admissions Data Analysis</h3>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Analyzed 15,757 hospital admission records from a cardiology-focused hospital dataset spanning 2017–2019 — delivered as two files whose true relationship wasn't what it appeared to be: the field named 'Admission No' turned out to be a reused patient identifier, not a unique visit key, meaning 2,598 patients (21.2%) had more than one recorded visit, one as many as 17.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Answered 9 structured clinical questions covering visit timing, demographics, length of stay, smoking/alcohol disease correlation, and patient outcomes — then reproduced every answer independently in MySQL across a genuinely two-table relational schema (patients + patient_visits) linked by a real foreign key.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Built a 3-page, 15-visual interactive Power BI dashboard with 5 DAX measures and a bucketed analytical view — while navigating a distinctive set of MySQL and Power BI issues specific to this dataset's scale and structure, including a genuine data-corruption bug caught mid-pipeline.
+                        </li>
+                        <li class="text-slate-400 mb-4 text-sm">
+                             Surfaced a counter-intuitive clinical finding worth double-checking against domain literature: smokers showed a LOWER rate of coronary artery disease than non-smokers (56.1% vs. 70.7%), while diabetes was meaningfully higher in smokers (40.7% vs. 29.4%) — reported as found, not adjusted to match expectation, alongside the honest caveat that a possible selection effect in this specific patient population can't be ruled out from this data alone.
+                        </li>   
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">My SQL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-medium">Power BI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="assets/Cardiology Hospital Healthcare Admissions Data Analysis.pdf" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i> Report
+                            </a>
+                            <a href="https://github.com/KumaarSanket/Cardiology Hospital Healthcare Admissions Data Analysis" class="text-primary hover:text-secondary transition font-medium">
+                                <i class="fab fa-github mr-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                     <div class="flex-shrink-0 w-80 lg:w-96 snap-start project-card rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 overflow-hidden cursor-pointer" onclick="openCertificateModal(this.querySelector('img'))">
